@@ -9,7 +9,7 @@ for more details.
 
 ``` js
 var addWheelListener = require('wheel');
-addWheelListener(graphics.domContainer, function (e) {
+addWheelListener(domElement, function (e) {
   // mouse wheel event
 });
 ```
