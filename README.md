@@ -1,6 +1,6 @@
 # wheel
 
-This module unifies handling of mouse whee event accross different browsers.
+This module unifies handling of mouse whee event across different browsers.
 
 See [MDN](https://developer.mozilla.org/en-US/docs/Web/Reference/Events/wheel?redirectlocale=en-US&redirectslug=DOM%2FMozilla_event_reference%2Fwheel)
 for more details.
