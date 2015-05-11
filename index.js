@@ -57,6 +57,10 @@ function _addWheelListener( elem, eventName, callback, useCapture ) {
       stopPropagation: function() {
         if(originalEvent.stopPropagation)
           originalEvent.stopPropagation();
+      },
+      stopImmediatePropagation: function() {
+        if(originalEvent.stopImmediatePropagation)
+          originalEvent.stopImmediatePropagation();
       }
     };
 
