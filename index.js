@@ -53,6 +53,10 @@ function _addWheelListener( elem, eventName, callback, useCapture ) {
         originalEvent.preventDefault ?
             originalEvent.preventDefault() :
             originalEvent.returnValue = false;
+      },
+      stopPropagation: function() {
+        if(originalEvent.stopPropagation)
+          originalEvent.stopPropagation();
       }
     };
 
