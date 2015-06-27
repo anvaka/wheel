@@ -5,8 +5,8 @@
  * for more details
  *
  * Usage:
- *  var addWheelListener = require('wheel/addWheelListener');
- *  var removeWheelListener = require('wheel/removeWheelListener');
+ *  var addWheelListener = require('wheel').addWheelListener;
+ *  var removeWheelListener = require('wheel').removeWheelListener;
  *  addWheelListener(domElement, function (e) {
  *    // mouse wheel event
  *  });
