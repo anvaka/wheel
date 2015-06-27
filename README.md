@@ -8,10 +8,12 @@ for more details.
 # Usage
 
 ``` js
-var addWheelListener = require('wheel');
+var addWheelListener = require('wheel/addWheelListener');
+var removeWheelListener = require('wheel/removeWheelListener');
 addWheelListener(domElement, function (e) {
-  // mouse wheel event
+	// mouse wheel event
 });
+removeWheelListener(domElement, function);
 ```
 
 # install
