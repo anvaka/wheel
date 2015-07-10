@@ -5,20 +5,27 @@
  * for more details
  *
  * Usage:
- *  var addWheelListener = require('wheel');
+ *  var addWheelListener = require('wheel').addWheelListener;
+ *  var removeWheelListener = require('wheel').removeWheelListener;
  *  addWheelListener(domElement, function (e) {
  *    // mouse wheel event
  *  });
+ *  removeWheelListener(domElement, function);
  */
-module.exports = addWheelListener;
+module.exports = {
+    addWheelListener: addWheelListener,
+    removeWheelListener: removeWheelListener
+}
 
-var prefix = "", _addEventListener, onwheel, support;
+var prefix = "", _addEventListener, _removeEventListener, onwheel, support;
 
 // detect event model
 if ( window.addEventListener ) {
     _addEventListener = "addEventListener";
+    _removeEventListener = "removeEventListener";
 } else {
     _addEventListener = "attachEvent";
+    _removeEventListener = "detachEvent";
     prefix = "on";
 }
 
@@ -33,6 +40,15 @@ function addWheelListener( elem, callback, useCapture ) {
     // handle MozMousePixelScroll in older Firefox
     if( support == "DOMMouseScroll" ) {
         _addWheelListener( elem, "MozMousePixelScroll", callback, useCapture );
+    }
+};
+
+function removeWheelListener( elem, callback, useCapture ) {
+    _removeWheelListener( elem, support, callback, useCapture );
+
+    // handle MozMousePixelScroll in older Firefox
+    if( support == "DOMMouseScroll" ) {
+        _removeWheelListener( elem, "MozMousePixelScroll", callback, useCapture );
     }
 };
 
@@ -77,4 +93,8 @@ function _addWheelListener( elem, eventName, callback, useCapture ) {
     return callback( event );
 
   }, useCapture || false );
+}
+
+function _removeWheelListener( elem, eventName, callback, useCapture ) {
+  elem[ _removeEventListener ]( prefix + eventName, callback, useCapture || false );
 }
