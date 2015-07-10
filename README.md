@@ -16,6 +16,15 @@ addWheelListener(domElement, function (e) {
 removeWheelListener(domElement, function);
 ```
 
+You can also use a shortcut for addWheelListener:
+
+``` js
+var addWheelListener = require('wheel');
+addWheelListener(domElement, function (e) {
+	// mouse wheel event
+});
+```
+
 # install
 
 With [npm](https://npmjs.org) do:

@@ -12,10 +12,14 @@
  *  });
  *  removeWheelListener(domElement, function);
  */
-module.exports = {
-    addWheelListener: addWheelListener,
-    removeWheelListener: removeWheelListener
-}
+// by default we shortcut to 'addEventListener':
+
+module.exports = addWheelListener;
+
+// But also expose "advanced" api with unsubscribe:
+mdoule.exports.addWheelListener = addWheelListener;
+mdoule.exports.removeWheelListener = removeWheelListener;
+
 
 var prefix = "", _addEventListener, _removeEventListener, onwheel, support;
 
@@ -53,6 +57,9 @@ function removeWheelListener( elem, callback, useCapture ) {
 };
 
 function _addWheelListener( elem, eventName, callback, useCapture ) {
+  // TODO: in theory this anonymous function may result in incorrect
+  // unsubscription in some browsers. But in practice, I don't think we should
+  // worry too much about it (those browsers are on the way out)
   elem[ _addEventListener ]( prefix + eventName, support == "wheel" ? callback : function( originalEvent ) {
     !originalEvent && ( originalEvent = window.event );
 
