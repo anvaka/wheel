@@ -17,26 +17,14 @@
 module.exports = addWheelListener;
 
 // But also expose "advanced" api with unsubscribe:
-mdoule.exports.addWheelListener = addWheelListener;
-mdoule.exports.removeWheelListener = removeWheelListener;
+module.exports.addWheelListener = addWheelListener;
+module.exports.removeWheelListener = removeWheelListener;
 
 
 var prefix = "", _addEventListener, _removeEventListener, onwheel, support;
 
-// detect event model
-if ( window.addEventListener ) {
-    _addEventListener = "addEventListener";
-    _removeEventListener = "removeEventListener";
-} else {
-    _addEventListener = "attachEvent";
-    _removeEventListener = "detachEvent";
-    prefix = "on";
-}
-
-// detect available wheel event
-support = "onwheel" in document.createElement("div") ? "wheel" : // Modern browsers support "wheel"
-          document.onmousewheel !== undefined ? "mousewheel" : // Webkit and IE support at least "mousewheel"
-          "DOMMouseScroll"; // let's assume that remaining browsers are older Firefox
+detectEventModel(typeof window !== 'undefined' && window,
+                typeof document !== 'undefined' && document);
 
 function addWheelListener( elem, callback, useCapture ) {
     _addWheelListener( elem, support, callback, useCapture );
@@ -104,4 +92,24 @@ function _addWheelListener( elem, eventName, callback, useCapture ) {
 
 function _removeWheelListener( elem, eventName, callback, useCapture ) {
   elem[ _removeEventListener ]( prefix + eventName, callback, useCapture || false );
+}
+
+function detectEventModel(window, document) {
+  if ( window && window.addEventListener ) {
+      _addEventListener = "addEventListener";
+      _removeEventListener = "removeEventListener";
+  } else {
+      _addEventListener = "attachEvent";
+      _removeEventListener = "detachEvent";
+      prefix = "on";
+  }
+
+  if (document) {
+    // detect available wheel event
+    support = "onwheel" in document.createElement("div") ? "wheel" : // Modern browsers support "wheel"
+              document.onmousewheel !== undefined ? "mousewheel" : // Webkit and IE support at least "mousewheel"
+              "DOMMouseScroll"; // let's assume that remaining browsers are older Firefox
+  } else {
+    support = "wheel";
+  }
 }

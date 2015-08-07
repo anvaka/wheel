@@ -1,4 +1,4 @@
-# wheel
+# wheel  [![Build Status](https://travis-ci.org/anvaka/wheel.svg)](https://travis-ci.org/anvaka/wheel)
 
 This module unifies handling of mouse whee event across different browsers.
 
