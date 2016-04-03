@@ -60,6 +60,8 @@ function _addWheelListener( elem, eventName, callback, useCapture ) {
       deltaMode: originalEvent.type == "MozMousePixelScroll" ? 0 : 1,
       deltaX: 0,
       delatZ: 0,
+      clientX: originalEvent.clientX,
+      clientY: originalEvent.clientY,
       preventDefault: function() {
         originalEvent.preventDefault ?
             originalEvent.preventDefault() :
