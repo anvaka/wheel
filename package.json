@@ -1,6 +1,6 @@
 {
   "name": "wheel",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Mouse wheel event unified for all browsers",
   "main": "index.js",
   "scripts": {
