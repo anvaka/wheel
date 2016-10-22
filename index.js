@@ -21,7 +21,7 @@ module.exports.addWheelListener = addWheelListener;
 module.exports.removeWheelListener = removeWheelListener;
 
 
-var prefix = "", _addEventListener, _removeEventListener, onwheel, support;
+var prefix = "", _addEventListener, _removeEventListener,  support;
 
 detectEventModel(typeof window !== 'undefined' && window,
                 typeof document !== 'undefined' && document);
@@ -33,7 +33,7 @@ function addWheelListener( elem, callback, useCapture ) {
     if( support == "DOMMouseScroll" ) {
         _addWheelListener( elem, "MozMousePixelScroll", callback, useCapture );
     }
-};
+}
 
 function removeWheelListener( elem, callback, useCapture ) {
     _removeWheelListener( elem, support, callback, useCapture );
@@ -42,12 +42,12 @@ function removeWheelListener( elem, callback, useCapture ) {
     if( support == "DOMMouseScroll" ) {
         _removeWheelListener( elem, "MozMousePixelScroll", callback, useCapture );
     }
-};
+}
 
-function _addWheelListener( elem, eventName, callback, useCapture ) {
   // TODO: in theory this anonymous function may result in incorrect
   // unsubscription in some browsers. But in practice, I don't think we should
   // worry too much about it (those browsers are on the way out)
+function _addWheelListener( elem, eventName, callback, useCapture ) {
   elem[ _addEventListener ]( prefix + eventName, support == "wheel" ? callback : function( originalEvent ) {
     !originalEvent && ( originalEvent = window.event );
 
@@ -59,7 +59,8 @@ function _addWheelListener( elem, eventName, callback, useCapture ) {
       type: "wheel",
       deltaMode: originalEvent.type == "MozMousePixelScroll" ? 0 : 1,
       deltaX: 0,
-      delatZ: 0,
+      deltaY: 0,
+      deltaZ: 0,
       clientX: originalEvent.clientX,
       clientY: originalEvent.clientY,
       preventDefault: function() {
