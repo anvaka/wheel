@@ -1,9 +1,9 @@
 # wheel  [![Build Status](https://travis-ci.org/anvaka/wheel.svg)](https://travis-ci.org/anvaka/wheel)
 
-This module unifies handling of mouse whee event across different browsers.
+In 2014 this module was supposed to unify handling of mouse whee event across
+different browsers.
 
-See [MDN](https://developer.mozilla.org/en-US/docs/Web/Reference/Events/wheel?redirectlocale=en-US&redirectslug=DOM%2FMozilla_event_reference%2Fwheel)
-for more details.
+Now it's just a wrapper on top of `element.addEventListener('wheel', callback)`;
 
 # Usage
 
