@@ -7,7 +7,7 @@ I don't think you need to use this library anymore. Use this instead:
   element.addEventListener('wheel', ...);
 ```
 
-In 2014 this module was supposed to unify handling of mouse whee event across
+In 2014 this module was supposed to unify handling of mouse wheel event across
 different browsers.
 
 Now it's just a wrapper on top of `element.addEventListener('wheel', callback)`.
