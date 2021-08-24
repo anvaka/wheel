@@ -1,10 +1,10 @@
-# wheel  [![Build Status](https://travis-ci.org/anvaka/wheel.svg)](https://travis-ci.org/anvaka/wheel)
+# wheel 
 
 I don't think you need to use this library anymore. Use this instead:
 
 
 ``` js
-  element.addEventListener('wheel', ...);
+element.addEventListener('wheel', ...);
 ```
 
 In 2014 this module was supposed to unify handling of mouse wheel event across
